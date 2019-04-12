@@ -1,0 +1,8 @@
+# Don't track content of these folders:
+bin/
+obj/
+
+# Exclude compiled examples:
+src/examples/*
+!src/examples/*.c
+!src/examples/*.h
