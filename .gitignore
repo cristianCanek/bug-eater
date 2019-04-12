@@ -4,5 +4,6 @@ obj/
 
 # Exclude compiled examples:
 src/examples/*
+!src/examples/Makefile
 !src/examples/*.c
 !src/examples/*.h
