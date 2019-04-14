@@ -9,33 +9,41 @@
 ################################################################################
 
 # Usage:
-#   make all         : Builds all the binaries for the code in this path.
-#   make hello_world : Builds the "hello_world" binary.
-#   make clean       : Deletes all the binaries on this path.
+#   make       : Builds all the binaries for the code in this path.
+#   make all   : Builds all the binaries for the code in this path.
+#   make clean : Deletes all the binaries on this path.
 
-# List all the known targets.
-TARGETS = hello_world basic_calculator
+# Shell to use.
+SHELL = /bin/sh
 
 # Compiler to use.
 CC = gcc
 
-# Compiler flags.
+# Mandatory flags for compiling the project.
+FLAGS =
+
+# User defined compiler settings.
 CFLAGS = -Wall -g
 
-# Build everything by default.
-all : $(TARGETS)
+# Public debugging flags.
+DEBUGFLAGS =
 
-# Build the "hello_world" binary.
-hello_world : hello_world.c
-	@echo "Building \"hello_world\" binary..."
-	$(CC) $(CFLAGS) hello_world.c -o hello_world
+# Public release flags.
+RELEASEFLAGS =
 
-# Build the "basic_calculator" binary.
-basic_calculator : basic_calculator.c
-	@echo "Building \"basic_calculator\" binary..."
-	$(CC) $(CFLAGS) basic_calculator.c -o basic_calculator
+# Output binary filenames.
+TARGET = $(subst .c,,$(shell echo *.c))
+
+# Common headers on which all files depend.
+COMMON =
+
+# Include directory.
+HEADERS =
+
+# Build the target by default.
+all : $(TARGET)
 
 # Delete all the binaries on this path.
 clean :
 	@echo "Removing binaries..."
-	@rm -v $(TARGETS)
+	@rm -f $(TARGET)
